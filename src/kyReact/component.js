@@ -1,4 +1,4 @@
-import { renderComponent } from './render'
+import { renderComponent } from './diff'
 class Component {
 
   constructor(props) {

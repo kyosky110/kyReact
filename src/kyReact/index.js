@@ -8,9 +8,6 @@ export const React = {
 }
 
 export const ReactDom = {
-  render: (vnode, container) => {
-    // container.innerHTML = ''
-    return container.appendChild(render(vnode,container))
-  }
+  render
 }
 
