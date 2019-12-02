@@ -4,7 +4,8 @@ import Component from './component'
 
 export const React = {
   createElement,
-  Component
+  Component,
+  render
 }
 
 export const ReactDom = {
