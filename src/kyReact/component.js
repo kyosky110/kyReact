@@ -1,4 +1,4 @@
-import { renderComponent } from './diff'
+import { enqueueSetState } from './setStateQueue'
 class Component {
 
   constructor(props) {
@@ -8,8 +8,8 @@ class Component {
 
   setState(update) {
     // 合并
-    this.state = {...this.state, ...update}
-    renderComponent(this)
+    // this.state = {...this.state, ...update}
+    enqueueSetState(update, this)
   }
 
   render() {
