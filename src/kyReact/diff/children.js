@@ -1,5 +1,5 @@
 import { diffNode } from './index'
-import { removeNode, isSameNodeType } from './utils'
+import { removeNode, isSameNodeType, didMount } from './utils'
 /**
  * 对比子节点
  * @param {*} dom 
@@ -63,6 +63,7 @@ export function diffChildren(dom, vchildren) {
         // 如果更新前的对应位置为空，说明此节点是新增的
         if (!f) {
           dom.appendChild(child)
+          didMount(child._component)
         } else if (child === f.nextSibling) {
           // 如果更新后的节点和更新前对应位置的下一个节点一样，说明当前位置的节点被移除了
           removeNode(f)

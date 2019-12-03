@@ -61,6 +61,11 @@ class Counter extends React.Component {
 
   componentDidMount() {
     console.log('did mount');
+    for ( let i = 0; i < 100; i++ ) {
+      this.setState( { num: this.state.num + 1 } );
+      console.log( this.state.num );    // 会输出什么？
+    }
+    // this.setState( { num: 1 } );
   }
 
   onClick() {

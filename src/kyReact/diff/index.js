@@ -1,6 +1,6 @@
 import { diffChildren } from './children'
 import { diffAttributes } from './props'
-import { isSameNodeType, removeNode } from './utils'
+import { isSameNodeType, removeNode,didMount } from './utils'
 /**
  * 
  * @param {HTMLElement} dom 真实dom
@@ -14,6 +14,7 @@ export function diff(dom, vnode, container) {
 
   if (container && ret.parentNode !== container) {
     container.appendChild(ret)
+    didMount(ret._component)
   }
 
   return ret
@@ -158,8 +159,6 @@ export function renderComponent(component) {
 
   if (component.base) {
     component.componentDidUpdate && (component.componentDidUpdate())
-  } else if (component.componentDidMount) {
-    component.componentDidMount()
   }
 
   component.base = base

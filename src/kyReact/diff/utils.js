@@ -16,3 +16,9 @@ export function removeNode(dom) {
     dom.parentNode.removeChild(dom)
   }
 }
+
+export function didMount(component) {
+  if (component && component.componentDidMount) {
+    component.componentDidMount()
+  }
+}
