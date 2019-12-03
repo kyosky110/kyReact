@@ -1,4 +1,4 @@
-import { diff } from './index'
+import { diffNode } from './index'
 import { removeNode, isSameNodeType } from './utils'
 /**
  * 对比子节点
@@ -55,7 +55,7 @@ export function diffChildren(dom, vchildren) {
       }
 
       // 对比
-      child = diff(child, vchild)
+      child = diffNode(child, vchild)
       
       // 更新DOM
       const f = domChildren[i]

@@ -20,7 +20,7 @@ export function diff(dom, vnode, container) {
 }
 
 
-function diffNode(dom, vnode) {
+export function diffNode(dom, vnode) {
 
   let newDom = dom
 
@@ -96,6 +96,7 @@ function diffComponent(dom, vnode) {
   }else {
     // 如果组件类型变化，则移除掉原来组件，并渲染新的组件
     if (c) {
+      unmountComponent(c)
       oldDom = null
     }
     c = createComponent(vnode)
@@ -134,6 +135,12 @@ function createComponent(vnode) {
 // set props
 function setComponentProps(component, props) {
 
+  if (!component.base) {
+    component.componentWillMount && (component.componentWillMount())
+  } else if (component.componentWillReceiveProps) {
+    component.componentWillReceiveProps(props)
+  }
+
   component.props = props;
 
   renderComponent(component);
@@ -143,11 +150,18 @@ function setComponentProps(component, props) {
 export function renderComponent(component) {
   let base;
   const renderM = component.render()
+
+  if (component.base && component.componentWillUpdate) {
+    component.componentWillUpdate()
+  }
   base = diffNode(component.base, renderM)
 
-  // if (component.base && component.base.parentNode) {
-  //   component.base.parentNode.replaceChild(base, component.base)
-  // }
+  if (component.base) {
+    component.componentDidUpdate && (component.componentDidUpdate())
+  } else if (component.componentDidMount) {
+    component.componentDidMount()
+  }
+
   component.base = base
   base._component = component
 }

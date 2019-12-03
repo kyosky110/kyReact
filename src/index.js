@@ -55,9 +55,15 @@ class Counter extends React.Component {
       }
   }
 
+  componentWillUpdate() {
+    console.log('update');
+  }
+
+  componentDidMount() {
+    console.log('did mount');
+  }
 
   onClick() {
-      console.log('onClick')
       this.setState( { num: this.state.num + 1 } );
   }
 
