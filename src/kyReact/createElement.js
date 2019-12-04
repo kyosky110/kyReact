@@ -56,6 +56,10 @@ export function flattenChildren(children) {
 
   children.forEach((item, index) => {
     // 没有太理解这个数组 但应该很少出现吧
+    /**
+     * 现在理解了，比如for循环里面 item 数组[1,2,3].map((item)=>(<span></span>)) 
+     * 到这儿 item=[{span},{},{}] 挨着的，所以可以取出来
+     */
     if (typeNumber(item) === 7) {
       if (isLastSimple) {
         childrenArray.push(lastString)

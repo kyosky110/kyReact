@@ -81,9 +81,12 @@ class Counter extends React.Component {
 
   render() {
       return (
-          <div onClick={ () => this.onClick() }>
+          <div>
               <h1>number: {this.state.num}</h1>
-              <button>add</button>
+              <button onClick={ () => this.onClick() }>add</button>
+              <div>{[1,2,3].map((el,index)=>(<span key={"x"+index}>{el}</span> ))}</div>
+              {/* <div>{[1,2,3].map((el,index)=>{ <span key={"x"+index}>{el}</span>  })}xxx
+{[4,5,6].map((el,index)=>{ <span key={"x"+index}>{el}</span>  })}</div> */}
           </div>
       );
   }
