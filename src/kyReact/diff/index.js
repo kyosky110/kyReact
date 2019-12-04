@@ -1,6 +1,6 @@
 import { diffChildren } from './children'
 import { diffAttributes } from './props'
-import { isSameNodeType, removeNode,didMount } from './utils'
+import { isSameNodeType, removeNode,didMount } from '../utils'
 /**
  * 
  * @param {HTMLElement} dom 真实dom
