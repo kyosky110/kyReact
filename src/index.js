@@ -65,14 +65,14 @@ class Counter extends React.Component {
     //   this.setState( { num: this.state.num + 1 } );
     //   console.log( this.state.num );    // 会输出什么？
     // }
-    for ( let i = 0; i < 100; i++ ) {
-      this.setState( prevState => {
-          console.log( prevState.num );
-          return {
-              num: prevState.num + 1
-          }
-      } );
-  }
+  //   for ( let i = 0; i < 100; i++ ) {
+  //     this.setState( prevState => {
+  //         console.log( prevState.num );
+  //         return {
+  //             num: prevState.num + 1
+  //         }
+  //     } );
+  // }
   }
 
   onClick() {

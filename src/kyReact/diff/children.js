@@ -1,5 +1,6 @@
 import { diffNode } from './index'
-import { removeNode, isSameNodeType, didMount } from './utils'
+import { removeNode, isSameNodeType, didMount, typeNumber } from '../utils'
+import { flattenChildren } from '../createElement'
 /**
  * 对比子节点
  * @param {*} dom 
@@ -10,7 +11,10 @@ export function diffChildren(dom, vchildren) {
   const children = []
 
   const keyed = {}
-
+  let flattenChildList = vchildren
+  if (typeNumber(vchildren) === 7) {
+    flattenChildList = flattenChildren(vchildren)
+  }
   // 将有key的节点和没有key的节点分开
   if (domChildren.length > 0){
     for (let i = 0; i < domChildren.length; i++) {
@@ -24,12 +28,12 @@ export function diffChildren(dom, vchildren) {
     }
   }
 
-  if (vchildren && vchildren.length > 0) {
+  if (flattenChildList && flattenChildList.length > 0) {
     let min = 0
     let childrenLen = children.length
 
-    for (let i = 0; i < vchildren.length; i++) {
-      const vchild = vchildren[i];
+    for (let i = 0; i < flattenChildList.length; i++) {
+      const vchild = flattenChildList[i];
       const key = vchild.key
       let child
 
