@@ -1,6 +1,6 @@
 import { createElement } from './createElement'
 import { render } from './render'
-import Component from './component'
+import { Component } from './component'
 
 export const React = {
   createElement,

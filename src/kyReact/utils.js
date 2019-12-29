@@ -1,5 +1,10 @@
 let __type = Object.prototype.toString
 
+export let options = {
+  async: false,
+  dirtyComponent: {}
+}
+
 let numberMap = {
   //null undefined IE6-8这里会返回[object Object]
   '[object Boolean]': 2,
@@ -45,4 +50,16 @@ export function didMount(component) {
   if (component && component.componentDidMount) {
     component.componentDidMount()
   }
+}
+
+/**
+ * 判断是否是事件
+ * @param {*} name 
+ */
+export function isEventName(name) {
+  return /^on[A-Z]/.test(name);
+}
+
+export function isEventNameLowerCase(name) {
+  return /^on[a-z]/.test(name);
 }

@@ -14,7 +14,15 @@ function createElement(type, props, ...children) {
 				normalizedProps[i] = type.defaultProps[i];
 			}
 		}
-	}
+  }
+  
+  if (typeof type === 'function') {
+    const newComponent = new type(normalizedProps)
+    if (!newComponent.render) {
+      return newComponent
+    }
+  }
+
   return createVNode(
 		type,
 		normalizedProps,
@@ -49,7 +57,7 @@ export function flattenChildren(children) {
       childType = typeNumber(children)
   
   if (childType === 3 || childType === 4) {
-    return children
+    return createVNode('#text', children, null, null) 
   }
 
   if (childType !== 7) return children
@@ -87,6 +95,13 @@ export function flattenChildren(children) {
     if (length - 1 === index) {
       if (isLastSimple) childrenArray.push(lastString)
     }
+  })
+
+  childrenArray = childrenArray.map((item) => {
+    if (typeNumber(item) === 4) {
+      item = createVNode('#text', item, null, null) 
+    }
+    return item
   })
 
   return childrenArray

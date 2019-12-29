@@ -9,21 +9,21 @@ import {React, ReactDom} from './kyReact'
 
 // ReactDom.render(element, document.getElementById('root'))
 
-// function tick() {
-//   const element = (
-//       <div className='index' data='1111'>
-//           <h1 style={{color:'red'}}>Hello, world!</h1>
-//           <h2>It is {new Date().toLocaleTimeString()}.</h2>
-//       </div>
-//     );
-//     ReactDom.render(
-//       element,
-//       document.getElementById('root')
-//   );
-// }
+function tick() {
+  const element = (
+      <div className='index' data='1111'>
+          <h1 style={{color:'red'}}>Hello, world!</h1>
+          <h2>It is {new Date().toLocaleTimeString()}.</h2>
+      </div>
+    );
+    ReactDom.render(
+      element,
+      document.getElementById('root')
+  );
+}
 
 // // setInterval( tick, 1000 );
-// // tick()
+tick()
 
 // class Welcome extends React.Component {
 //   render() {
@@ -92,7 +92,7 @@ class Counter extends React.Component {
   }
 }
 
-ReactDom.render(
-  <Counter />,
-  document.getElementById( 'root' )
-);
+// ReactDom.render(
+//   <Counter />,
+//   document.getElementById( 'root' )
+// );
